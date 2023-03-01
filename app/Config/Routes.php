@@ -31,10 +31,17 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+
+use App\Controllers\Reportes;
 use App\Controllers\MiPerfil;
 use App\Controllers\Programacion;
 //use App\Controllers\News;
 use App\Controllers\Pages;
+
+$routes->get('reportes_asistencia', [Reportes::class, 'asistencia']);
+$routes->get('reportes_permisos', [Reportes::class, 'permisos']);
+$routes->get('reportes_incidencias', [Reportes::class, 'incidencias']);
+$routes->get('reportes_estadisitcas', [Reportes::class, 'estadisitcas']);
 
 $routes->get('miperfil', [MiPerfil::class, 'index']);
 
@@ -46,8 +53,8 @@ $routes->match(['get', 'post'], 'news/create', [News::class, 'create']);
 $routes->get('news/(:segment)', [News::class, 'view']);
 $routes->get('news', [News::class, 'index']);
 */
-$routes->get('pages', [Pages::class, 'index']);
-$routes->get('(:segment)', [Pages::class, 'view']);
+//$routes->get('pages', [Pages::class, 'index']);
+//$routes->get('(:segment)', [Pages::class, 'view']);
 
 
 
